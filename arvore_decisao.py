@@ -98,12 +98,22 @@ print(previsoes)
 # pois mostra não apenas os acertos do modelo (TP e TN), mas também os erros (FP e FN). 
 # Isso ajuda a entender onde o modelo está errando e pode fornecer informações valiosas para ajustar o
 # modelo ou o processo de treinamento
+
+#gera a matriz de confusão, que compara os valores reais de y_teste com os valores previstos 
+# pelo modelo (previsoes).Ela mostra quantas classificações o modelo acertou e quantas errou, 
+# separando os erros em falsos positivos (FP) e falsos negativos (FN). Isso ajuda a entender 
+# onde o modelo está performando bem e onde precisa ser ajustado.
 confusao = confusion_matrix(y_teste, previsoes)
 print(confusao)
 # Visualização da matriz de confusão
 v = ConfusionMatrix(DecisionTreeClassifier())
+# v.fit(x_treinamento, y_treinamento) está treinando o classificador (DecisionTreeClassifier) 
+# com os dados de treinamento x_treinamento (variáveis independentes) e y_treinamento (valores reais de saída).
 v.fit(x_treinamento, y_treinamento)
+#v.score(x_teste, y_teste) está avaliando o modelo treinado com os dados de teste x_teste 
+# e comparando as previsões com os valores reais y_teste.
 v.score(x_teste, y_teste)
+# usada para gerar visualizações.
 v.poof()
 
 
